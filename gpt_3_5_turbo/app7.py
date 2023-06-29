@@ -1,9 +1,14 @@
 import csv
 import openai
 from datetime import datetime
+import yaml
 
-# Set up your OpenAI API credentials
-openai.api_key = "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"
+# Load configuration from the config file
+with open("config.yaml", "r") as file:
+    config = yaml.safe_load(file)
+
+# Set the OpenAI API key
+openai.api_key = config["openai"]["api_key"]
 
 # Read candidate and manager data from CSV files
 candidate_file = "data/input/candidates_annotated.csv"
